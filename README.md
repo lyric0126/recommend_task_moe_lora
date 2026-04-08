@@ -239,8 +239,11 @@ o_proj
 
 ###  HydraLoRA training gpu use
 
-![gpu utilazation](assets/gpu-util.png)
+![gpu utilazation](assets/gpu-hyd.png)
 
+###  baseline training gpu use
+
+![gpu utilazation](assets/gpu-base.png)
 
 
 ### Standard LoRA Baseline
