@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Env
+.venv/
+venv/
+env/
+conda_env/
+.env
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log
+logs/
+log/
+
+# Training / outputs
+outputs/
+output/
+runs/
+wandb/
+result/
+results/
+tmp/
+temp/
+cache/
+*.out
+
+# Checkpoints / model weights
+checkpoints/
+checkpoint/
+ckpt/
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+*.engine
+*.plan
+
+# Hugging Face / model cache
+.cache/
+huggingface/
+hf_cache/
+models/
+model/
+pretrained/
+pretrained_models/
+
+# Data
+data/
+dataset/
+datasets/
+
+# Common large media / archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+*.npy
+*.npz
+*.pkl
+*.pickle
+
+# Jupyter
+.ipynb_checkpoints/
