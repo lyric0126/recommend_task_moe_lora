@@ -41,11 +41,17 @@ def main():
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
+    # model = AutoModelForCausalLM.from_pretrained(
+    #     MODEL_NAME,
+    #     dtype=torch.bfloat16 if torch.cuda.is_available() else torch.float32,
+    #     device_map="auto" if torch.cuda.is_available() else None,
+    # )
     model = AutoModelForCausalLM.from_pretrained(
         MODEL_NAME,
-        dtype=torch.bfloat16 if torch.cuda.is_available() else torch.float32,
-        device_map="auto" if torch.cuda.is_available() else None,
+        torch_dtype=torch.bfloat16 if torch.cuda.is_available() else torch.float32,
     )
+    if torch.cuda.is_available():
+        model = model.cuda()
 
     peft_config = LoraConfig(
         r=8,
@@ -69,8 +75,9 @@ def main():
         save_total_limit=2,
         report_to="tensorboard",
         logging_dir=os.path.join(OUTPUT_DIR, "tb_logs"),
-        bf16=torch.cuda.is_available(),
+        bf16=False,
         fp16=False,
+        max_length=512,
     )
 
     trainer = SFTTrainer(
@@ -81,6 +88,10 @@ def main():
         processing_class=tokenizer,
         peft_config=peft_config,
     )
+    train_dataloader = trainer.get_train_dataloader()
+    first_batch = next(iter(train_dataloader))
+    print("first batch input_ids shape:", first_batch["input_ids"].shape)
+    print("first batch attention_mask shape:", first_batch["attention_mask"].shape)
 
     trainer.train()
 

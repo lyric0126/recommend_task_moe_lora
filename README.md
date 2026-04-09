@@ -185,7 +185,7 @@ bash /HydraLoRA-main/test_use_lora/run_lora.sh
 
 ### Standard LoRA Baseline
 
-- **Model**: `Qwen/Qwen2.5-0.5B-Instruct`
+- **Model**: `llama 3.2 1b`
 - **Trainer**: TRL `SFTTrainer`
 - **LoRA target modules**:
   - `q_proj`
@@ -203,7 +203,7 @@ lora_dropout=0.05
 
 ### HydraLoRA Adaptation
 
-- **Model**: `Qwen/Qwen2.5-0.5B-Instruct` (usually via a local snapshot path)
+- **Model**: `llama3.2 1b` (usually via a local snapshot path)
 
 HydraLoRA replaces standard LoRA with an asymmetric multi-branch low-rank structure.
 
@@ -235,20 +235,15 @@ o_proj
 
 ### HydraLoRA
 
-![HydraLoRA training curves](assets/result_hydlora.png)
-
-###  HydraLoRA training gpu use
-
-![gpu utilazation](assets/gpu-hyd.png)
-
-###  baseline training gpu use
-
-![gpu utilazation](assets/gpu-base.png)
+![HydraLoRA training curves](assets/train_loss.png)
 
 
-### Standard LoRA Baseline
 
-![Standard LoRA baseline training curves](assets/resultbase.png)
+###  baseline && HydraLoRA training gpu use
+
+![gpu utilazation](assets/image.png)
+
+
 
 
 
