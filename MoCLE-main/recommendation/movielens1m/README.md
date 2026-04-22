@@ -221,15 +221,15 @@ loss 分布直方图：
 
 梯度范数：
 
-![grad_norm](plots/grad_norm.png)
+![grad_norm](../../outputs/movielens1m_mocle_full_1epoch/plots/grad_norm.png)
 
 step time：
 
-![step_time](plots/step_time.png)
+![step_time](../../outputs/movielens1m_mocle_full_1epoch/plots/step_time.png)
 
 序列长度：
 
-![seq_len](plots/seq_len.png)
+![seq_len](../../outputs/movielens1m_mocle_full_1epoch/plots/seq_len.png)
 
 训练稳定性指标：
 
@@ -250,11 +250,11 @@ step time：
 
 expert 分布图：
 
-![expert_id_hist](plots/expert_id_hist.png)
+![expert_id_hist](../../outputs/movielens1m_mocle_full_1epoch/plots/expert_id_hist.png)
 
 expert 随 step 的变化：
 
-![expert_id_scatter](plots/expert_id_scatter.png)
+![expert_id_scatter](../../outputs/movielens1m_mocle_full_1epoch/plots/expert_id_scatter.png)
 
 4 个 expert 的样本量并不均匀，这是由 `cluster_id = task_type` 和 `expert_id = cluster_id % 4` 的规则共同决定的。MovieLens genre 本身分布不均，所以 expert 也会不均衡。
 
