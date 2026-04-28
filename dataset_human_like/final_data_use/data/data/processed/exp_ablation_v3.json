@@ -1,0 +1,86 @@
+{
+  "goodreads": {
+    "random_mix": {
+      "hitrate": 0.050056,
+      "mrr": 0.015139,
+      "ndcg": 0.02317,
+      "recall": 0.050056,
+      "train_rows": 287912,
+      "users": 1798
+    },
+    "single_domain": {
+      "hitrate": 0.054505,
+      "mrr": 0.015416,
+      "ndcg": 0.02439,
+      "recall": 0.054505,
+      "train_rows": 201400,
+      "users": 1798
+    },
+    "v1_pseudo_user": {
+      "hitrate": 0.052836,
+      "mrr": 0.015044,
+      "ndcg": 0.02372,
+      "recall": 0.052836,
+      "train_rows": 214467,
+      "users": 1798
+    },
+    "v2_pseudo_user": {
+      "hitrate": 0.037264,
+      "mrr": 0.01191,
+      "ndcg": 0.017756,
+      "recall": 0.037264,
+      "train_rows": 321400,
+      "users": 1798
+    },
+    "v2fix_pseudo_user": {
+      "hitrate": 0.043382,
+      "mrr": 0.015547,
+      "ndcg": 0.022028,
+      "recall": 0.043382,
+      "train_rows": 274480,
+      "users": 1798
+    }
+  },
+  "movielens": {
+    "random_mix": {
+      "hitrate": 0.082239,
+      "mrr": 0.028386,
+      "ndcg": 0.04072,
+      "recall": 0.082239,
+      "train_rows": 322667,
+      "users": 1751
+    },
+    "single_domain": {
+      "hitrate": 0.083952,
+      "mrr": 0.026944,
+      "ndcg": 0.039971,
+      "recall": 0.083952,
+      "train_rows": 232206,
+      "users": 1751
+    },
+    "v1_pseudo_user": {
+      "hitrate": 0.07767,
+      "mrr": 0.028193,
+      "ndcg": 0.03954,
+      "recall": 0.07767,
+      "train_rows": 315879,
+      "users": 1751
+    },
+    "v2_pseudo_user": {
+      "hitrate": 0.073101,
+      "mrr": 0.027054,
+      "ndcg": 0.037622,
+      "recall": 0.073101,
+      "train_rows": 352206,
+      "users": 1751
+    },
+    "v2fix_pseudo_user": {
+      "hitrate": 0.077099,
+      "mrr": 0.027841,
+      "ndcg": 0.039146,
+      "recall": 0.077099,
+      "train_rows": 307550,
+      "users": 1751
+    }
+  }
+}

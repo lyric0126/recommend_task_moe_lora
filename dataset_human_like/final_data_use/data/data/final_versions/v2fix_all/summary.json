@@ -1,0 +1,32 @@
+{
+  "confidence_distribution": {
+    "medium": 331,
+    "strict": 1211
+  },
+  "construction_type": "structured_v2fix_all",
+  "description": "Extended set / main release with strict and medium V2-fix pseudo users.",
+  "domain_coverage_distribution": {
+    "3": 1231,
+    "4": 311
+  },
+  "domains_covered": {
+    "goodreads": 1532,
+    "kuairec": 364,
+    "mind": 1499,
+    "movielens": 1542
+  },
+  "interaction_count": 298777,
+  "key_metrics": {
+    "ablation_activity_temporal": 0.663218,
+    "ablation_full": 0.674013,
+    "ablation_semantic_only": 0.470436,
+    "behavior_consistency": 0.871076,
+    "global_consistency": 0.680195,
+    "semantic_consistency": 0.470436,
+    "temporal_consistency": 0.774082
+  },
+  "pseudo_user_count": 1542,
+  "source": "existing pipeline artifacts",
+  "storage_format": "jsonl_fallback_with_parquet_suffix",
+  "version_name": "v2fix_all"
+}

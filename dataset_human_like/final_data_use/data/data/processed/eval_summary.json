@@ -1,0 +1,20 @@
+{
+  "domain_coverage_distribution": {
+    "4": 1751
+  },
+  "full_method": {
+    "behavior_consistency": 0.820482,
+    "global_consistency": 0.453148,
+    "semantic_consistency": 0.248588,
+    "temporal_consistency": 0.767702
+  },
+  "match_reuse_rate": 0.685997,
+  "pseudo_interaction_count": 481974,
+  "pseudo_user_count": 1751,
+  "random_mix": {
+    "behavior_consistency": 0.699011,
+    "global_consistency": 0.267952,
+    "semantic_consistency": 0.210693,
+    "temporal_consistency": 0.146181
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "default": {
+    "confidence_distribution": {
+      "medium": 331,
+      "strict": 1211
+    },
+    "pseudo_interaction_count": 298777,
+    "pseudo_user_count": 1542,
+    "reuse_rate": 0.61141,
+    "v2fix_full_method": {
+      "ablation_activity_temporal": 0.663218,
+      "ablation_full": 0.674013,
+      "ablation_semantic_only": 0.470436,
+      "behavior_consistency": 0.871076,
+      "global_consistency": 0.680195,
+      "semantic_consistency": 0.470436,
+      "temporal_consistency": 0.774082
+    }
+  },
+  "default_objective": 0.636447,
+  "recommend_replace_default": false,
+  "tuned": {
+    "confidence_distribution": {
+      "loose": 28,
+      "medium": 575,
+      "strict": 1026
+    },
+    "config": "configs/pseudo_user_pipeline_v2fix_tuned.yaml",
+    "pseudo_interaction_count": 359630,
+    "pseudo_user_count": 1629,
+    "reuse_rate": 0.587021,
+    "tuned_full_method": {
+      "ablation_full": 0.675883,
+      "behavior_consistency": 0.911753,
+      "global_consistency": 0.682476,
+      "semantic_consistency": 0.443092,
+      "temporal_consistency": 0.736402
+    }
+  },
+  "tuned_better": false,
+  "tuned_objective": 0.619461
+}

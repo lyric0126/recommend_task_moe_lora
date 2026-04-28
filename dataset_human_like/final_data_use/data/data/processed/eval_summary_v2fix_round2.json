@@ -1,0 +1,18 @@
+{
+  "confidence_distribution": {
+    "loose": 8,
+    "medium": 453,
+    "strict": 1089
+  },
+  "config": "configs/pseudo_user_pipeline_v2fix_round2_best.yaml",
+  "pseudo_interaction_count": 308491,
+  "pseudo_user_count": 1550,
+  "reuse_rate": 0.651753,
+  "round2_full_method": {
+    "ablation_full": 0.668461,
+    "behavior_consistency": 0.883434,
+    "global_consistency": 0.674966,
+    "semantic_consistency": 0.466265,
+    "temporal_consistency": 0.75541
+  }
+}

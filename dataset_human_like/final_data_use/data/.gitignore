@@ -1,0 +1,16 @@
+# Local raw and generated table data are intentionally not tracked here.
+raw/
+data/raw/
+data/interim/
+data/interim_clean/
+data/processed/**/*.parquet
+data/processed/search/*.parquet
+data/processed/search/*.jsonl
+data/processed/search_round2/*.parquet
+data/processed/search_round2/*.jsonl
+data/final_versions/**/*.parquet
+
+# Runtime logs and Python caches.
+logs/
+__pycache__/
+*.pyc

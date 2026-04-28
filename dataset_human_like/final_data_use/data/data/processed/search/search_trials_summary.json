@@ -1,0 +1,33 @@
+{
+  "best_trial": {
+    "behavior_consistency": 0.917859,
+    "global_consistency": 0.71934,
+    "loose_count": 0,
+    "loose_ratio": 0.0,
+    "medium_count": 149,
+    "objective": 0.705996,
+    "params": {
+      "fallback_candidate_size": 300,
+      "medium_threshold": 0.561761,
+      "strict_threshold": 0.656854,
+      "top_k": 5,
+      "weights": {
+        "activity": 0.212064,
+        "behavior": 0.285222,
+        "recency_semantic": 0.003748,
+        "semantic": 0.186878,
+        "temporal": 0.312088
+      }
+    },
+    "pseudo_user_count": 1005,
+    "reuse_rate": 0.492593,
+    "semantic_consistency": 0.481125,
+    "strict_count": 856,
+    "strict_ratio": 0.851741,
+    "temporal_consistency": 0.795135,
+    "trial_id": 46,
+    "valid": true
+  },
+  "num_trials": 60,
+  "valid_trials": 9
+}

@@ -1,0 +1,62 @@
+{
+  "default": {
+    "confidence_distribution": {
+      "medium": 331,
+      "strict": 1211
+    },
+    "pseudo_interaction_count": 298777,
+    "pseudo_user_count": 1542,
+    "reuse_rate": 0.61141,
+    "v2fix_full_method": {
+      "ablation_activity_temporal": 0.663218,
+      "ablation_full": 0.674013,
+      "ablation_semantic_only": 0.470436,
+      "behavior_consistency": 0.871076,
+      "global_consistency": 0.680195,
+      "semantic_consistency": 0.470436,
+      "temporal_consistency": 0.774082
+    }
+  },
+  "default_objective_round2": 0.706285,
+  "first_round_objective_round2": -0.351837,
+  "first_round_tuned": {
+    "confidence_distribution": {
+      "loose": 28,
+      "medium": 575,
+      "strict": 1026
+    },
+    "config": "configs/pseudo_user_pipeline_v2fix_tuned.yaml",
+    "pseudo_interaction_count": 359630,
+    "pseudo_user_count": 1629,
+    "reuse_rate": 0.587021,
+    "tuned_full_method": {
+      "ablation_full": 0.675883,
+      "behavior_consistency": 0.911753,
+      "global_consistency": 0.682476,
+      "semantic_consistency": 0.443092,
+      "temporal_consistency": 0.736402
+    }
+  },
+  "recommendation": "keep_default",
+  "round2_beats_default_without_loose": false,
+  "round2_more_stable_than_first": true,
+  "second_round": {
+    "confidence_distribution": {
+      "loose": 8,
+      "medium": 453,
+      "strict": 1089
+    },
+    "config": "configs/pseudo_user_pipeline_v2fix_round2_best.yaml",
+    "pseudo_interaction_count": 308491,
+    "pseudo_user_count": 1550,
+    "reuse_rate": 0.651753,
+    "round2_full_method": {
+      "ablation_full": 0.668461,
+      "behavior_consistency": 0.883434,
+      "global_consistency": 0.674966,
+      "semantic_consistency": 0.466265,
+      "temporal_consistency": 0.75541
+    }
+  },
+  "second_round_objective": -0.323912
+}

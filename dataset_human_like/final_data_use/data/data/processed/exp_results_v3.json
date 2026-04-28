@@ -1,0 +1,102 @@
+{
+  "goodreads": {
+    "pseudo_user_v2fix": {
+      "item_item": {
+        "hitrate": 0.044494,
+        "mrr": 0.013839,
+        "ndcg": 0.020981,
+        "recall": 0.044494,
+        "users": 1798
+      },
+      "popularity": {
+        "hitrate": 0.03337,
+        "mrr": 0.010061,
+        "ndcg": 0.015398,
+        "recall": 0.03337,
+        "users": 1798
+      }
+    },
+    "random_mix": {
+      "item_item": {
+        "hitrate": 0.050056,
+        "mrr": 0.015139,
+        "ndcg": 0.02317,
+        "recall": 0.050056,
+        "users": 1798
+      },
+      "popularity": {
+        "hitrate": 0.031702,
+        "mrr": 0.009822,
+        "ndcg": 0.014839,
+        "recall": 0.031702,
+        "users": 1798
+      }
+    },
+    "single_domain": {
+      "item_item": {
+        "hitrate": 0.054505,
+        "mrr": 0.015416,
+        "ndcg": 0.02439,
+        "recall": 0.054505,
+        "users": 1798
+      },
+      "popularity": {
+        "hitrate": 0.034483,
+        "mrr": 0.010161,
+        "ndcg": 0.015705,
+        "recall": 0.034483,
+        "users": 1798
+      }
+    }
+  },
+  "movielens": {
+    "pseudo_user_v2fix": {
+      "item_item": {
+        "hitrate": 0.079383,
+        "mrr": 0.028109,
+        "ndcg": 0.039957,
+        "recall": 0.079383,
+        "users": 1751
+      },
+      "popularity": {
+        "hitrate": 0.052541,
+        "mrr": 0.020169,
+        "ndcg": 0.02769,
+        "recall": 0.052541,
+        "users": 1751
+      }
+    },
+    "random_mix": {
+      "item_item": {
+        "hitrate": 0.082239,
+        "mrr": 0.028386,
+        "ndcg": 0.04072,
+        "recall": 0.082239,
+        "users": 1751
+      },
+      "popularity": {
+        "hitrate": 0.051399,
+        "mrr": 0.017563,
+        "ndcg": 0.025465,
+        "recall": 0.051399,
+        "users": 1751
+      }
+    },
+    "single_domain": {
+      "item_item": {
+        "hitrate": 0.083952,
+        "mrr": 0.026944,
+        "ndcg": 0.039971,
+        "recall": 0.083952,
+        "users": 1751
+      },
+      "popularity": {
+        "hitrate": 0.051399,
+        "mrr": 0.01881,
+        "ndcg": 0.026408,
+        "recall": 0.051399,
+        "users": 1751
+      }
+    }
+  }
+}

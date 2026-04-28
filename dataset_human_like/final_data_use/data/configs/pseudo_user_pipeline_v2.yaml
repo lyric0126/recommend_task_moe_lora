@@ -1,0 +1,45 @@
+pipeline:
+  storage_format: auto
+  embedding_backend: auto
+  embedding_dim: 96
+  top_k_matches: 8
+  min_interactions_per_user: 20
+  min_interactions_per_item: 5
+  semantic_coarse_block: true
+  confidence_thresholds:
+    strict: 0.70
+    medium: 0.52
+  matching_weights:
+    semantic: 0.46
+    recency_semantic: 0.14
+    activity: 0.14
+    temporal: 0.16
+    behavior: 0.10
+  synthesis:
+    min_domains: 2
+    max_anchor_users: 0
+    coverage_targets:
+      two_domain: 0.25
+      three_domain: 0.35
+      four_domain: 0.40
+  sample_limit:
+    movielens: 250000
+    goodreads: 250000
+    mind: 250000
+    kuairec: 250000
+paths:
+  raw:
+    movielens: raw/movielens/ml-25m
+    goodreads: raw/goodreads
+    mind: raw/mind/MINDlarge_train
+    kuairec: raw/kuairec/KuaiRec 2.0/data
+  interim: data/interim
+  interim_clean: data/interim_clean
+  processed: data/processed
+  reports: reports
+  logs: logs
+datasets:
+  - movielens
+  - goodreads
+  - mind
+  - kuairec

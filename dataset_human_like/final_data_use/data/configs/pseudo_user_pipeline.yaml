@@ -1,0 +1,27 @@
+pipeline:
+  storage_format: jsonl_fallback
+  embedding_dim: 64
+  top_k_matches: 5
+  min_interactions_per_user: 20
+  min_interactions_per_item: 5
+  sample_limit:
+    movielens: 250000
+    goodreads: 250000
+    mind: 250000
+    kuairec: 250000
+paths:
+  raw:
+    movielens: raw/movielens/ml-25m
+    goodreads: raw/goodreads
+    mind: raw/mind/MINDlarge_train
+    kuairec: raw/kuairec/KuaiRec 2.0/data
+  interim: data/interim
+  interim_clean: data/interim_clean
+  processed: data/processed
+  reports: reports
+  logs: logs
+datasets:
+  - movielens
+  - goodreads
+  - mind
+  - kuairec

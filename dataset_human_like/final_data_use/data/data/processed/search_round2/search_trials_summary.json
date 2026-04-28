@@ -1,0 +1,72 @@
+{
+  "best_any_trial": {
+    "behavior_consistency": 0.890325,
+    "global_consistency": 0.696382,
+    "interaction_count": 258475,
+    "interaction_growth_penalty": 0.0,
+    "invalid_reason": [],
+    "loose_count": 0,
+    "loose_ratio": 0.0,
+    "medium_count": 196,
+    "objective": 0.738374,
+    "params": {
+      "fallback_candidate_size": 120,
+      "medium_threshold": 0.549027,
+      "strict_threshold": 0.634391,
+      "top_k": 2,
+      "weights": {
+        "activity": 0.254131,
+        "behavior": 0.223408,
+        "recency_semantic": 0.036642,
+        "semantic": 0.157802,
+        "temporal": 0.328017
+      }
+    },
+    "pseudo_user_count": 1334,
+    "reuse_rate": 0.573127,
+    "semantic_consistency": 0.483924,
+    "strict_count": 1138,
+    "strict_ratio": 0.853073,
+    "temporal_consistency": 0.795083,
+    "trial_id": 24,
+    "valid": true
+  },
+  "best_valid_trial": {
+    "behavior_consistency": 0.890325,
+    "global_consistency": 0.696382,
+    "interaction_count": 258475,
+    "interaction_growth_penalty": 0.0,
+    "invalid_reason": [],
+    "loose_count": 0,
+    "loose_ratio": 0.0,
+    "medium_count": 196,
+    "objective": 0.738374,
+    "params": {
+      "fallback_candidate_size": 120,
+      "medium_threshold": 0.549027,
+      "strict_threshold": 0.634391,
+      "top_k": 2,
+      "weights": {
+        "activity": 0.254131,
+        "behavior": 0.223408,
+        "recency_semantic": 0.036642,
+        "semantic": 0.157802,
+        "temporal": 0.328017
+      }
+    },
+    "pseudo_user_count": 1334,
+    "reuse_rate": 0.573127,
+    "semantic_consistency": 0.483924,
+    "strict_count": 1138,
+    "strict_ratio": 0.853073,
+    "temporal_consistency": 0.795083,
+    "trial_id": 24,
+    "valid": true
+  },
+  "invalid_reason_distribution": {
+    "pseudo_user_count_below_min": 26,
+    "strict_count_below_min": 33
+  },
+  "num_trials": 50,
+  "valid_trials": 9
+}

@@ -1,0 +1,70 @@
+{
+  "ablation": {
+    "activity_temporal": 0.533362,
+    "full": 0.304942,
+    "semantic_only": 0.101169
+  },
+  "confidence_distribution": {
+    "loose": 5253
+  },
+  "confidence_level_metrics": {
+    "loose": {
+      "ablation_activity_temporal": 0.533362,
+      "ablation_full": 0.304942,
+      "ablation_semantic_only": 0.101169,
+      "behavior_consistency": 0.832109,
+      "global_consistency": 0.316953,
+      "semantic_consistency": 0.101169,
+      "temporal_consistency": 0.583215
+    },
+    "medium": {},
+    "strict": {}
+  },
+  "domain_coverage_distribution": {
+    "2": 1751,
+    "3": 1751,
+    "4": 1751
+  },
+  "match_reuse_rate": 0.962917,
+  "pseudo_interaction_count": 4841259,
+  "pseudo_user_count": 5253,
+  "v1": {
+    "domain_coverage_distribution": {
+      "4": 1751
+    },
+    "full_method": {
+      "behavior_consistency": 0.820482,
+      "global_consistency": 0.453148,
+      "semantic_consistency": 0.248588,
+      "temporal_consistency": 0.767702
+    },
+    "match_reuse_rate": 0.685997,
+    "pseudo_interaction_count": 481974,
+    "pseudo_user_count": 1751,
+    "random_mix": {
+      "behavior_consistency": 0.699011,
+      "global_consistency": 0.267952,
+      "semantic_consistency": 0.210693,
+      "temporal_consistency": 0.146181
+    }
+  },
+  "v2_better_than_v1_global": false,
+  "v2_full_method": {
+    "ablation_activity_temporal": 0.533362,
+    "ablation_full": 0.304942,
+    "ablation_semantic_only": 0.101169,
+    "behavior_consistency": 0.832109,
+    "global_consistency": 0.316953,
+    "semantic_consistency": 0.101169,
+    "temporal_consistency": 0.583215
+  },
+  "v2_random_mix": {
+    "ablation_activity_temporal": 0.266755,
+    "ablation_full": 0.170065,
+    "ablation_semantic_only": 0.03758,
+    "behavior_consistency": 0.695921,
+    "global_consistency": 0.172925,
+    "semantic_consistency": 0.03758,
+    "temporal_consistency": 0.173007
+  }
+}

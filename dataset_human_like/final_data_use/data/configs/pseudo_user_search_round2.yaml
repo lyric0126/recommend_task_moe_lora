@@ -1,0 +1,25 @@
+search:
+  seed: 203001
+  num_trials: 50
+  dev_anchor_count: 1600
+  output_dir: data/processed/search_round2
+  default_pseudo_user_count: 1542
+  default_strict_count: 1211
+  default_interaction_count: 298777
+  min_pseudo_user_count: 1300
+  min_strict_count: 1000
+  max_loose_count: 5
+  max_interaction_growth: 1.10
+  avg_interactions_per_pseudo_user: 193.7594
+  search_ranges:
+    weights:
+      semantic: [0.10, 0.16]
+      recency_semantic: [0.03, 0.07]
+      activity: [0.24, 0.32]
+      temporal: [0.30, 0.38]
+      behavior: [0.16, 0.24]
+    strict_threshold: [0.62, 0.70]
+    medium_threshold: [0.50, 0.60]
+    top_k: [2, 3]
+    fallback_candidate_size: [80, 120, 180]
+base_config: configs/pseudo_user_pipeline_v2fix.yaml

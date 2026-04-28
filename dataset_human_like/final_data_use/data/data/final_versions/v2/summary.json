@@ -1,0 +1,32 @@
+{
+  "confidence_distribution": {
+    "loose": 5253
+  },
+  "construction_type": "structured_v2",
+  "description": "Wide coverage, loose expansion, degraded quality comparison set.",
+  "domain_coverage_distribution": {
+    "2": 1751,
+    "3": 1751,
+    "4": 1751
+  },
+  "domains_covered": {
+    "goodreads": 4299,
+    "kuairec": 2165,
+    "mind": 4042,
+    "movielens": 5253
+  },
+  "interaction_count": 4841259,
+  "key_metrics": {
+    "ablation_activity_temporal": 0.533362,
+    "ablation_full": 0.304942,
+    "ablation_semantic_only": 0.101169,
+    "behavior_consistency": 0.832109,
+    "global_consistency": 0.316953,
+    "semantic_consistency": 0.101169,
+    "temporal_consistency": 0.583215
+  },
+  "pseudo_user_count": 5253,
+  "source": "existing pipeline artifacts",
+  "storage_format": "jsonl_fallback_with_parquet_suffix",
+  "version_name": "v2"
+}

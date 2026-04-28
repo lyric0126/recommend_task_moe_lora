@@ -1,0 +1,31 @@
+{
+  "confidence_distribution": {
+    "strict": 1211
+  },
+  "construction_type": "structured_v2fix_strict",
+  "description": "Core set / highest quality strict-only V2-fix release.",
+  "domain_coverage_distribution": {
+    "3": 1090,
+    "4": 121
+  },
+  "domains_covered": {
+    "goodreads": 1211,
+    "kuairec": 148,
+    "mind": 1184,
+    "movielens": 1211
+  },
+  "interaction_count": 215057,
+  "key_metrics": {
+    "ablation_activity_temporal": 0.703036,
+    "ablation_full": 0.701151,
+    "ablation_semantic_only": 0.475797,
+    "behavior_consistency": 0.877793,
+    "global_consistency": 0.704164,
+    "semantic_consistency": 0.475797,
+    "temporal_consistency": 0.811773
+  },
+  "pseudo_user_count": 1211,
+  "source": "existing pipeline artifacts",
+  "storage_format": "jsonl_fallback_with_parquet_suffix",
+  "version_name": "v2fix_strict"
+}

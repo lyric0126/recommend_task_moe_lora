@@ -1,0 +1,38 @@
+experiment:
+  version: v3
+  main_pseudo_version: v2fix
+  target_domains:
+    - movielens
+    - goodreads
+  k_values:
+    - 10
+  split:
+    method: leave_last_2_out
+    min_user_interactions: 5
+    max_users_per_domain: 0
+  training:
+    max_interactions_per_aug_user: 80
+    random_seed: 2027
+    variants:
+      - single_domain
+      - random_mix
+      - pseudo_user_v2fix
+  baseline:
+    models:
+      - popularity
+      - item_item
+    item_item_max_history: 30
+  ablation:
+    max_aug_rows_per_variant: 120000
+paths:
+  interim_clean: data/interim_clean
+  processed: data/processed
+  exp_splits: data/processed/exp_splits
+  exp_sets: data/processed/exp_sets
+  reports: reports
+  logs: logs
+datasets:
+  - movielens
+  - goodreads
+  - mind
+  - kuairec

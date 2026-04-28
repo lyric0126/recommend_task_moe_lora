@@ -1,0 +1,28 @@
+{
+  "confidence_distribution": {
+    "loose": 1746,
+    "medium": 5
+  },
+  "construction_type": "structured_v1",
+  "description": "Conservative structured baseline from V1.",
+  "domain_coverage_distribution": {
+    "4": 1751
+  },
+  "domains_covered": {
+    "goodreads": 1751,
+    "kuairec": 1751,
+    "mind": 1751,
+    "movielens": 1751
+  },
+  "interaction_count": 481974,
+  "key_metrics": {
+    "behavior_consistency": 0.820482,
+    "global_consistency": 0.453148,
+    "semantic_consistency": 0.248588,
+    "temporal_consistency": 0.767702
+  },
+  "pseudo_user_count": 1751,
+  "source": "existing pipeline artifacts",
+  "storage_format": "jsonl_fallback_with_parquet_suffix",
+  "version_name": "v1"
+}
