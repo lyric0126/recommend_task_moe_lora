@@ -1,0 +1,51 @@
+MoCLE + HydraLoRA Combined 4-choice Accuracy Delivery
+Generated: 2026-05-02 23:58:14 Asia/Shanghai
+
+Evaluation method
+- Score candidate letters A/B/C/D by log probability on validation prompts.
+- accuracy_full_target scores letter+EOS; accuracy_letter_only scores only the letter token.
+- MoCLE routing uses domain -> expert: movielens=expert_0, goodreads=expert_1, mind=expert_2, kuairec=expert_3.
+
+Main comparison
+MovieLens HydraLoRA ckpt-53000     total=6028   full= 87.29% letter= 87.01%
+Pseudo HydraLoRA balanced ckpt-11000 total=1949   full= 73.52% letter= 73.63%
+Pseudo MoCLE ckpt-step-290000      total=1949   full= 26.17% letter= 25.40%
+
+Pseudo-user domain breakdown
+HydraLoRA balanced ckpt-11000:
+  goodreads  n=621   full= 86.47% letter= 86.31%
+  kuairec    n=141   full= 60.28% letter= 60.28%
+  mind       n=561   full= 53.30% letter= 53.30%
+  movielens  n=626   full= 81.79% letter= 82.27%
+MoCLE ckpt-step-290000:
+  goodreads  n=621   full= 27.38% letter= 24.96%
+  kuairec    n=141   full= 17.73% letter= 18.44%
+  mind       n=561   full= 21.57% letter= 22.46%
+  movielens  n=626   full= 30.99% letter= 30.03%
+
+MoCLE training run
+- output_dir: /vepfs-cnbja62d5d769987/liushaokun/sys_work/MoCLE-main/outputs/human_like_v2fix_all_mocle_full_20260501_230156
+- checkpoint evaluated: outputs/human_like_v2fix_all_mocle_full_20260501_230156/checkpoint-step-290000
+- train samples: 297235
+- completed steps: 297235 / 297235
+- last train loss: 0.718091
+- elapsed seconds: 16787.95
+- trainable params: 6815744
+- source interactions: 298777; generated instruction samples: 297235
+
+Important note
+- The comparison eval uses HydraLoRA pseudo-user valid.json for all pseudo-user results.
+- The MoCLE model was trained from the full v2fix_all interaction export converted into a different instruction format, then evaluated on the HydraLoRA valid prompt format for side-by-side comparability.
+- MoCLE save_steps=10000, so the latest saved adapter checkpoint is checkpoint-step-290000; training itself completed 297235 steps.
+
+Files in this delivery
+- HYDRALORA_EVAL_SUMMARY.txt
+- README.md
+- SUMMARY.txt
+- eval_mocle_choice_accuracy.py
+- mocle_ckpt290000_valid_accuracy.json
+- mocle_ckpt290000_valid_accuracy.log
+- mocle_data_build_stats.json
+- mocle_train_summary.json
+- smoke_mocle_ckpt290000_valid_accuracy.json
+- smoke_mocle_ckpt290000_valid_accuracy.log

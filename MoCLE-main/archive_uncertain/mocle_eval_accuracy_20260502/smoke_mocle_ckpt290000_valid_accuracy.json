@@ -1,0 +1,200 @@
+{
+  "data": "/vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/data/hydralora_pseudo_v2fix_all/valid.json",
+  "checkpoint": "outputs/human_like_v2fix_all_mocle_full_20260501_230156/checkpoint-step-290000",
+  "base_model": "/vepfs-cnbja62d5d769987/liushaokun/models/Llama-3.2-1B",
+  "total": 8,
+  "accuracy_full_target": 0.5,
+  "accuracy_letter_only": 0.25,
+  "group_field": "domain",
+  "route_field": "domain",
+  "domain_to_expert": {
+    "movielens": "expert_0",
+    "goodreads": "expert_1",
+    "mind": "expert_2",
+    "kuairec": "expert_3"
+  },
+  "groups": {
+    "goodreads": {
+      "total": 4,
+      "accuracy_full_target": 0.5,
+      "accuracy_letter_only": 0.25
+    },
+    "kuairec": {
+      "total": 1,
+      "accuracy_full_target": 1.0,
+      "accuracy_letter_only": 1.0
+    },
+    "mind": {
+      "total": 2,
+      "accuracy_full_target": 0.5,
+      "accuracy_letter_only": 0.0
+    },
+    "movielens": {
+      "total": 1,
+      "accuracy_full_target": 0.0,
+      "accuracy_letter_only": 0.0
+    }
+  },
+  "predictions": [
+    {
+      "index": 0,
+      "answer": "C",
+      "pred_full": "C",
+      "pred_letter": "A",
+      "group": "goodreads",
+      "expert": "expert_1",
+      "scores_full": {
+        "A": -4.756499290466309,
+        "B": -6.6221747398376465,
+        "C": -4.745039939880371,
+        "D": -6.834285259246826
+      },
+      "scores_letter": {
+        "A": -4.286607265472412,
+        "B": -6.411607265472412,
+        "C": -4.661607265472412,
+        "D": -6.661607265472412
+      }
+    },
+    {
+      "index": 1,
+      "answer": "C",
+      "pred_full": "A",
+      "pred_letter": "A",
+      "group": "goodreads",
+      "expert": "expert_1",
+      "scores_full": {
+        "A": -3.5798428058624268,
+        "B": -5.102611541748047,
+        "C": -4.305267810821533,
+        "D": -3.891139030456543
+      },
+      "scores_letter": {
+        "A": -3.188278913497925,
+        "B": -4.938279151916504,
+        "C": -4.188279151916504,
+        "D": -3.813278913497925
+      }
+    },
+    {
+      "index": 2,
+      "answer": "B",
+      "pred_full": "A",
+      "pred_letter": "A",
+      "group": "movielens",
+      "expert": "expert_0",
+      "scores_full": {
+        "A": -1.2779964208602905,
+        "B": -2.048661947250366,
+        "C": -2.044224977493286,
+        "D": -1.3915560245513916
+      },
+      "scores_letter": {
+        "A": -1.1128902435302734,
+        "B": -1.8628902435302734,
+        "C": -1.8628902435302734,
+        "D": -1.2378902435302734
+      }
+    },
+    {
+      "index": 3,
+      "answer": "C",
+      "pred_full": "C",
+      "pred_letter": "A",
+      "group": "mind",
+      "expert": "expert_2",
+      "scores_full": {
+        "A": -2.652301788330078,
+        "B": -3.0731396675109863,
+        "C": -2.485006332397461,
+        "D": -2.7797837257385254
+      },
+      "scores_letter": {
+        "A": -2.256939649581909,
+        "B": -2.881939649581909,
+        "C": -2.381939649581909,
+        "D": -2.631939649581909
+      }
+    },
+    {
+      "index": 4,
+      "answer": "A",
+      "pred_full": "A",
+      "pred_letter": "A",
+      "group": "goodreads",
+      "expert": "expert_1",
+      "scores_full": {
+        "A": -5.072851657867432,
+        "B": -6.390731334686279,
+        "C": -5.152143955230713,
+        "D": -7.318382263183594
+      },
+      "scores_letter": {
+        "A": -4.8365936279296875,
+        "B": -6.2115936279296875,
+        "C": -5.0865936279296875,
+        "D": -7.2115936279296875
+      }
+    },
+    {
+      "index": 5,
+      "answer": "A",
+      "pred_full": "A",
+      "pred_letter": "A",
+      "group": "kuairec",
+      "expert": "expert_3",
+      "scores_full": {
+        "A": -1.7292420864105225,
+        "B": -2.070134401321411,
+        "C": -1.9375654458999634,
+        "D": -1.9335583448410034
+      },
+      "scores_letter": {
+        "A": -1.4740145206451416,
+        "B": -1.8490145206451416,
+        "C": -1.7240145206451416,
+        "D": -1.5990145206451416
+      }
+    },
+    {
+      "index": 6,
+      "answer": "A",
+      "pred_full": "D",
+      "pred_letter": "D",
+      "group": "mind",
+      "expert": "expert_2",
+      "scores_full": {
+        "A": -2.2532904148101807,
+        "B": -2.613361358642578,
+        "C": -2.2664377689361572,
+        "D": -1.9507163763046265
+      },
+      "scores_letter": {
+        "A": -1.9508610963821411,
+        "B": -2.4508609771728516,
+        "C": -2.2008609771728516,
+        "D": -1.8258610963821411
+      }
+    },
+    {
+      "index": 7,
+      "answer": "B",
+      "pred_full": "A",
+      "pred_letter": "A",
+      "group": "goodreads",
+      "expert": "expert_1",
+      "scores_full": {
+        "A": -5.0594940185546875,
+        "B": -5.837672710418701,
+        "C": -5.065089702606201,
+        "D": -6.548495769500732
+      },
+      "scores_letter": {
+        "A": -4.493656635284424,
+        "B": -5.618656635284424,
+        "C": -4.993656635284424,
+        "D": -6.431156635284424
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+MoCLE Same-Standard Retrain and Evaluation Delivery
+Generated: 2026-05-03 04:49:14 Asia/Shanghai
+
+What was wrong
+- First MoCLE run trained on a regenerated interaction prompt format but was evaluated on HydraLoRA valid prompts. That was not the same standard and produced 26.17% accuracy.
+- Second issue: MoCLE was using fixed lr=1e-5, no warmup/cosine scheduler, grad_accum=1. HydraLoRA used lr=2e-4, cosine, warmup_ratio=0.03, grad_accum=8.
+- Third issue: MoCLE DataLoader used shuffle=False. HydraLoRA Trainer shuffles train data; with cosine LR, fixed ordering biases which domains see high vs low LR.
+
+Final same-standard setup
+- Train data: HydraLoRA data/hydralora_pseudo_v2fix_all/train.json, copied unchanged except cluster_id added from domain.
+- Valid data: same HydraLoRA valid split, copied unchanged except cluster_id added from domain.
+- Routing: movielens->expert_0, goodreads->expert_1, mind->expert_2, kuairec->expert_3.
+- Optimizer: AdamW, lr=2e-4, cosine, warmup_ratio=0.03, grad_accum=8, shuffle=True, one epoch-equivalent.
+
+Main comparison
+MovieLens HydraLoRA ckpt-53000             total=6028  full= 87.29% letter= 87.01%
+Pseudo HydraLoRA balanced ckpt-11000       total=1949  full= 73.52% letter= 73.63%
+Pseudo MoCLE final same-standard ckpt-11940 total=1949  full= 69.93% letter= 69.06%
+
+MoCLE ablation trail
+mocle_lr1e5_ckpt95523                      total=1949  full= 38.38% letter= 38.53%
+mocle_hydraopt_ckpt11940                   total=1949  full= 66.65% letter= 66.50%
+mocle_hydraopt_ckpt11000                   total=1949  full= 66.19% letter= 65.93%
+mocle_hydraopt_shuffle_ckpt11940           total=1949  full= 69.93% letter= 69.06%
+mocle_hydraopt_shuffle_ckpt11000           total=1949  full= 69.47% letter= 69.16%
+
+Final MoCLE domain breakdown
+  goodreads  n=621  full= 85.83% letter= 85.51%
+  kuairec    n=141  full= 29.08% letter= 19.15%
+  mind       n=561  full= 49.20% letter= 48.48%
+  movielens  n=626  full= 81.95% letter= 82.43%
+
+HydraLoRA pseudo-user domain breakdown
+  goodreads  n=621  full= 86.47% letter= 86.31%
+  kuairec    n=141  full= 60.28% letter= 60.28%
+  mind       n=561  full= 53.30% letter= 53.30%
+  movielens  n=626  full= 81.79% letter= 82.27%
+
+Residual gap
+- MoCLE improves from 26.17% -> 38.38% -> 66.65% -> 69.93% after fixing standard, optimizer, and shuffle.
+- Remaining gap vs HydraLoRA 73.52% is concentrated in mind/kuairec. This is likely architectural: this MoCLE version uses hard domain routing to one expert, while HydraLoRA uses its own multi-LoRA routing/mixing implementation.
+
+Recommended checkpoint
+- outputs/mocle_hydralora_standard_hydraopt_shuffle_20260503_031729/checkpoint-step-11940
+
+Files in this delivery
+- HYDRALORA_EVAL_SUMMARY.txt
+- eval_mocle_choice_accuracy.py
+- mocle_hydraopt_ckpt11000_valid_accuracy.json
+- mocle_hydraopt_ckpt11000_valid_accuracy.log
+- mocle_hydraopt_ckpt11940_valid_accuracy.json
+- mocle_hydraopt_ckpt11940_valid_accuracy.log
+- mocle_hydraopt_noshuffle_train_summary.json
+- mocle_hydraopt_shuffle_ckpt11000_valid_accuracy.json
+- mocle_hydraopt_shuffle_ckpt11000_valid_accuracy.log
+- mocle_hydraopt_shuffle_ckpt11940_valid_accuracy.json
+- mocle_hydraopt_shuffle_ckpt11940_valid_accuracy.log
+- mocle_hydraopt_shuffle_train_summary.json
+- mocle_lr1e5_train_summary.json
+- mocle_standard_ckpt95523_valid_accuracy.json
+- mocle_standard_ckpt95523_valid_accuracy.log
+- standard_data_build_stats.json
+- train_single_gpu.py

@@ -1,0 +1,40 @@
+{
+  "domain_to_cluster": {
+    "goodreads": 1,
+    "kuairec": 3,
+    "mind": 2,
+    "movielens": 0
+  },
+  "out_dir": "/vepfs-cnbja62d5d769987/liushaokun/sys_work/MoCLE-main/data/hydralora_pseudo_v2fix_all_mocle_standard",
+  "source_dir": "/vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/data/hydralora_pseudo_v2fix_all",
+  "train": {
+    "count": 95523,
+    "domains": {
+      "goodreads": 29372,
+      "kuairec": 7139,
+      "mind": 29072,
+      "movielens": 29940
+    },
+    "outputs": {
+      "A": 23898,
+      "B": 23803,
+      "C": 23855,
+      "D": 23967
+    }
+  },
+  "valid": {
+    "count": 1949,
+    "domains": {
+      "goodreads": 621,
+      "kuairec": 141,
+      "mind": 561,
+      "movielens": 626
+    },
+    "outputs": {
+      "A": 473,
+      "B": 487,
+      "C": 508,
+      "D": 481
+    }
+  }
+}

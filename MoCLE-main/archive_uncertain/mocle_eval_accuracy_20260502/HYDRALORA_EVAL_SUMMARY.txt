@@ -1,0 +1,41 @@
+HydraLoRA 4-choice accuracy evaluation
+
+Method: score candidate letters A/B/C/D using validation prompts; accuracy_full_target scores letter+EOS, accuracy_letter_only scores only the letter token.
+
+MovieLens HydraLoRA checkpoint-53000
+data=/vepfs-cnbja62d5d769987/liushaokun/sys_work/test_use_lsk/lora_trl/data/hydralora_ml1m/valid.json
+adapter=test_use_lora/output/hydralora_ml1m_llama32_1b/checkpoint-53000
+total=6028
+accuracy_full_target=0.872926
+accuracy_letter_only=0.870106
+by task_type:
+  0: n=1457 full=0.910776 letter=0.908717
+  1: n=275 full=0.887273 letter=0.883636
+  2: n=263 full=0.920152 letter=0.923954
+  3: n=108 full=0.842593 letter=0.842593
+  4: n=1608 full=0.854478 letter=0.851990
+  5: n=273 full=0.904762 letter=0.904762
+  6: n=63 full=0.666667 letter=0.603175
+  7: n=1317 full=0.846621 letter=0.841306
+  8: n=9 full=0.888889 letter=0.888889
+  9: n=63 full=0.841270 letter=0.841270
+  10: n=193 full=0.870466 letter=0.870466
+  11: n=51 full=0.843137 letter=0.843137
+  12: n=61 full=0.901639 letter=0.901639
+  13: n=22 full=0.727273 letter=0.727273
+  14: n=58 full=0.896552 letter=0.896552
+  15: n=147 full=0.884354 letter=0.891156
+  16: n=9 full=0.888889 letter=0.888889
+  17: n=51 full=0.921569 letter=0.921569
+
+Pseudo-user balanced checkpoint-11000
+data=data/hydralora_pseudo_v2fix_all/valid.json
+adapter=deliveries/latest_balanced/checkpoints/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoint-11000
+total=1949
+accuracy_full_target=0.735249
+accuracy_letter_only=0.736275
+by domain:
+  goodreads: n=621 full=0.864734 letter=0.863124
+  kuairec: n=141 full=0.602837 letter=0.602837
+  mind: n=561 full=0.532977 letter=0.532977
+  movielens: n=626 full=0.817891 letter=0.822684

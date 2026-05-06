@@ -1,0 +1,39 @@
+{
+  "cluster_counts": {
+    "0": 92125,
+    "1": 88554,
+    "2": 87436,
+    "3": 29120
+  },
+  "domain_counts": {
+    "goodreads": 88554,
+    "kuairec": 29120,
+    "mind": 87436,
+    "movielens": 92125
+  },
+  "domain_to_cluster": {
+    "goodreads": 1,
+    "kuairec": 3,
+    "mind": 2,
+    "movielens": 0
+  },
+  "history_length_counts": {
+    "1": 1542,
+    "10": 283357,
+    "2": 1542,
+    "3": 1542,
+    "4": 1542,
+    "5": 1542,
+    "6": 1542,
+    "7": 1542,
+    "8": 1542,
+    "9": 1542
+  },
+  "output": "/vepfs-cnbja62d5d769987/liushaokun/sys_work/MoCLE-main/data/human_like_v2fix_all_instruction/train.jsonl",
+  "pseudo_users": 1542,
+  "rows_read": 298777,
+  "samples_written": 297235,
+  "seed": 20260501,
+  "skipped_no_negatives": 0,
+  "source": "/vepfs-cnbja62d5d769987/liushaokun/sys_work/dataset_human_like/final_data_use/data/data/final_versions/v2fix_all/pseudo_user_interactions.parquet"
+}

@@ -3,6 +3,7 @@
 
 import argparse
 import json
+import math
 import os
 import sys
 import time
@@ -36,11 +37,15 @@ def parse_args():
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
     parser.add_argument("--learning_rate", type=float, default=1e-5)
     parser.add_argument("--weight_decay", type=float, default=0.0)
+    parser.add_argument("--lr_scheduler_type", choices=["constant", "linear", "cosine"], default="constant")
+    parser.add_argument("--warmup_ratio", type=float, default=0.0)
+    parser.add_argument("--warmup_steps", type=int, default=0)
     parser.add_argument("--logging_steps", type=int, default=5)
     parser.add_argument("--save_steps", type=int, default=50, help="Save adapter checkpoints every N steps; <=0 disables periodic saves.")
     parser.add_argument("--tensorboard_log_dir", default=None)
     parser.add_argument("--disable_tensorboard", action="store_true")
     parser.add_argument("--seed", type=int, default=41)
+    parser.add_argument("--shuffle_train", action="store_true")
     parser.add_argument("--torch_dtype", choices=["auto", "float32", "float16", "bfloat16"], default="bfloat16")
     parser.add_argument("--device", default="cuda")
     parser.add_argument(
@@ -193,6 +198,29 @@ def compute_grad_norm(torch, parameters):
     return float(torch.sqrt(norm_sq).item())
 
 
+def create_lr_scheduler(torch, optimizer, args):
+    warmup_steps = args.warmup_steps
+    if warmup_steps <= 0 and args.warmup_ratio > 0:
+        warmup_steps = int(args.max_steps * args.warmup_ratio)
+    warmup_steps = max(0, warmup_steps)
+    total_steps = max(1, args.max_steps)
+
+    def lr_lambda(current_step):
+        if warmup_steps > 0 and current_step < warmup_steps:
+            return float(current_step) / float(max(1, warmup_steps))
+        if args.lr_scheduler_type == "constant":
+            return 1.0
+        progress = float(current_step - warmup_steps) / float(max(1, total_steps - warmup_steps))
+        progress = min(max(progress, 0.0), 1.0)
+        if args.lr_scheduler_type == "linear":
+            return max(0.0, 1.0 - progress)
+        if args.lr_scheduler_type == "cosine":
+            return 0.5 * (1.0 + math.cos(math.pi * progress))
+        return 1.0
+
+    return torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda), warmup_steps
+
+
 def write_jsonl(path, payload):
     with open(path, "a", encoding="utf-8") as f:
         f.write(json.dumps(payload, ensure_ascii=False) + "\n")
@@ -252,7 +280,8 @@ def main():
     dataloader = torch.utils.data.DataLoader(
         dataset,
         batch_size=args.batch_size,
-        shuffle=False,
+        shuffle=args.shuffle_train,
+        generator=torch.Generator().manual_seed(args.seed) if args.shuffle_train else None,
         collate_fn=collate_fn,
     )
     first_batch = next(iter(dataloader))
@@ -279,6 +308,7 @@ def main():
         free_bytes, total_bytes = torch.cuda.mem_get_info(0)
         print("gpu memory free/total: {:.2f} GiB / {:.2f} GiB".format(free_bytes / 2**30, total_bytes / 2**30))
     print("samples loaded       : {}".format(len(samples)))
+    print("shuffle train        : {}".format(args.shuffle_train))
     print("batch keys           : {}".format(sorted(first_batch.keys())))
     print("batch input_ids shape: {}".format(tuple(first_batch["input_ids"].shape)))
     print("batch labels shape   : {}".format(tuple(first_batch["labels"].shape)))
@@ -286,6 +316,11 @@ def main():
     print("first batch cluster_id: {}".format(first_batch_cluster_id))
     print("num experts          : {}".format(args.num_experts))
     print("max steps            : {}".format(args.max_steps))
+    warmup_steps_for_log = args.warmup_steps
+    if warmup_steps_for_log <= 0 and args.warmup_ratio > 0:
+        warmup_steps_for_log = int(args.max_steps * args.warmup_ratio)
+    print("lr scheduler         : {}".format(args.lr_scheduler_type))
+    print("warmup steps         : {}".format(max(0, warmup_steps_for_log)))
     print("logging steps        : {}".format(args.logging_steps))
     print("save steps           : {}".format(args.save_steps))
     print("supervised tokens    : {}".format(supervised_tokens))
@@ -312,6 +347,7 @@ def main():
         lr=args.learning_rate,
         weight_decay=args.weight_decay,
     )
+    scheduler, warmup_steps = create_lr_scheduler(torch, optimizer, args)
     writer, tensorboard_log_dir = create_summary_writer(args)
     metrics_path = os.path.join(args.output_dir, "train_metrics.jsonl")
 
@@ -355,6 +391,7 @@ def main():
                 if (batch_idx + 1) % args.gradient_accumulation_steps == 0:
                     grad_norm = compute_grad_norm(torch, trainable_parameters)
                     optimizer.step()
+                    scheduler.step()
                     optimizer.zero_grad(set_to_none=True)
                     global_step += 1
 
@@ -441,6 +478,8 @@ def main():
             writer.close()
 
     if global_step > 0:
+        if args.save_steps > 0 and global_step % args.save_steps != 0:
+            save_step_checkpoint(model, tokenizer, args, global_step)
         print(
             "TRAIN_COMPLETE steps={} last_loss={:.6f} last_lr={:.6e} last_cluster_id={} last_expert_id={} last_step_time={:.3f}s".format(
                 global_step,
@@ -464,6 +503,7 @@ def main():
         "device": str(device),
         "cuda_visible_devices": os.environ.get("CUDA_VISIBLE_DEVICES", ""),
         "samples": len(samples),
+        "shuffle_train": args.shuffle_train,
         "batch_shape": list(first_batch["input_ids"].shape),
         "supervised_tokens_first_batch": supervised_tokens,
         "train_mode": active_mode,
@@ -473,6 +513,9 @@ def main():
         "metrics_path": os.path.abspath(metrics_path),
         "logging_steps": args.logging_steps,
         "save_steps": args.save_steps,
+        "lr_scheduler_type": args.lr_scheduler_type,
+        "warmup_steps": warmup_steps,
+        "warmup_ratio": args.warmup_ratio,
         "total_params": total_params,
         "trainable_params": trainable_params,
         "max_steps": args.max_steps,
