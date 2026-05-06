@@ -1,0 +1,5 @@
+/home/liushaokun/miniconda3/envs/hydralora/lib/python3.10/site-packages/tensorboard/default.py:30: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+TensorFlow installation not found - running with reduced feature set.
+TensorBoard 2.20.0 at http://0.0.0.0:6008/ (Press CTRL+C to quit)
+E0501 15:49:43.370429 139874034489088 directory_watcher.py:254] File /vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoints/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/runs/events.out.tfevents.1777621776.iv-yebmqn6oe8bw80dy3ke5-test-2.404103.0 updated even though the current file is /vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoints/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/runs/events.out.tfevents.1777621776.iv-yebmqn6oe8bw80dy3ke5-test-2.404103.1

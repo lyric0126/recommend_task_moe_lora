@@ -27,6 +27,11 @@ from .peft_model import (
     PeftModelForSequenceClassification,
     PeftModelForTokenClassification,
 )
+
+# Newer Transformers versions import this symbol when the installed peft
+# metadata is >= 0.7.0. HydraLoRA vendors an older PEFT fork without mixed
+# adapter support, so expose a harmless alias for compatibility.
+PeftMixedModel = PeftModel
 from .tuners import (
     LoraConfig,
     LoraModel,

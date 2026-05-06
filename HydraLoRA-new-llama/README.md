@@ -153,3 +153,191 @@ If you find our work helpful, please consider citing our paper:
 
 The code refers to the repo [LoRAMoE](https://github.com/Ablustrund/LoRAMoE), [parameter-efficient-moe
 ](https://github.com/for-ai/parameter-efficient-moe), [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory), [opencompass](https://github.com/open-compass/opencompass/tree/main).
+
+## Local Experiment Delivery
+
+This workspace also contains a cleaned local delivery for pseudo-user HydraLoRA experiments with Llama-3.2-1B.
+
+### Retained Structure
+
+```text
+HydraLoRA/
+  fine-tuning.py
+  fine-tuning_pseudo_user.sh
+  prepare_pseudo_user_sft.py
+  eval_choice_accuracy.py
+data/
+  hydralora_pseudo_v2fix_all/
+    train.json
+    valid.json
+deliveries/
+  hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/
+  eval_accuracy/
+test_use_lora/output/
+  hydralora_ml1m_llama32_1b/
+  baseline_lora1_ml1m_llama32_1b/
+```
+
+Cleanup reports:
+
+```text
+cleanup_keep_list.md
+cleanup_delete_list.md
+cleanup_size_report.md
+```
+
+### Pseudo-user Training Result
+
+Final balanced pseudo-user run:
+
+```text
+deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827
+```
+
+Source data:
+
+```text
+/vepfs-cnbja62d5d769987/liushaokun/sys_work/dataset_human_like/final_data_use/data/data/final_versions/v2fix_all
+```
+
+Prepared data:
+
+```text
+data/hydralora_pseudo_v2fix_all/train.json
+data/hydralora_pseudo_v2fix_all/valid.json
+```
+
+Training summary:
+
+| Metric | Value |
+|---|---:|
+| Train examples | 95523 |
+| Valid examples | 1949 |
+| Total steps | 11940 |
+| Final train loss | 0.3163 |
+| Best eval loss | 0.3299 |
+| Best checkpoint step | 11000 |
+
+Best checkpoint:
+
+```text
+deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoints/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoint-11000
+```
+
+Latest checkpoint:
+
+```text
+deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoints/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoint-11940
+```
+
+Exposed best LoRA path:
+
+```text
+deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoints/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/sft_lora_model
+```
+
+Full run summary:
+
+```text
+deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/RESULTS.txt
+```
+
+### Accuracy Evaluation
+
+Accuracy here means 4-choice next-item accuracy. For each prompt, the evaluator scores `A`, `B`, `C`, and `D`; the highest-scoring letter is the prediction.
+
+Evaluation summary:
+
+```text
+deliveries/eval_accuracy/README.md
+deliveries/eval_accuracy/SUMMARY.txt
+```
+
+Results:
+
+| Dataset | Checkpoint | Examples | Accuracy |
+|---|---|---:|---:|
+| MovieLens | `test_use_lora/output/hydralora_ml1m_llama32_1b/checkpoint-53000` | 6028 | 87.29% |
+| Pseudo-user balanced | `checkpoint-11000` | 1949 | 73.52% |
+
+Pseudo-user accuracy by domain:
+
+| Domain | Examples | Accuracy |
+|---|---:|---:|
+| goodreads | 621 | 86.47% |
+| movielens | 626 | 81.79% |
+| kuairec | 141 | 60.28% |
+| mind | 561 | 53.30% |
+
+### Reproduction Commands
+
+Train pseudo-user balanced HydraLoRA:
+
+```bash
+cd /vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama
+export CUDA_VISIBLE_DEVICES=1
+export OUTPUT_ROOT=deliveries/reproduce_checkpoints
+export EXP_NAME=hydralora_pseudo_v2fix_all_balanced_repro
+export MAX_SAMPLES=0
+export MAX_SAMPLES_PER_USER_DOMAIN=20
+export NUM_TRAIN_EPOCHS=1
+export MAX_STEPS=-1
+bash HydraLoRA/fine-tuning_pseudo_user.sh
+```
+
+Evaluate pseudo-user accuracy:
+
+```bash
+CUDA_VISIBLE_DEVICES=1 /home/liushaokun/miniconda3/envs/hydralora/bin/python HydraLoRA/eval_choice_accuracy.py \
+  --base-model /vepfs-cnbja62d5d769987/liushaokun/models/Llama-3.2-1B \
+  --adapter deliveries/latest_balanced/checkpoints/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoint-11000 \
+  --data data/hydralora_pseudo_v2fix_all/valid.json \
+  --output deliveries/eval_accuracy/pseudo_balanced_ckpt11000_valid_accuracy.json \
+  --group-field domain \
+  --batch-size 4
+```
+
+Evaluate MovieLens comparison accuracy:
+
+```bash
+CUDA_VISIBLE_DEVICES=1 /home/liushaokun/miniconda3/envs/hydralora/bin/python HydraLoRA/eval_choice_accuracy.py \
+  --base-model /vepfs-cnbja62d5d769987/liushaokun/models/Llama-3.2-1B \
+  --adapter test_use_lora/output/hydralora_ml1m_llama32_1b/checkpoint-53000 \
+  --data /vepfs-cnbja62d5d769987/liushaokun/sys_work/test_use_lsk/lora_trl/data/hydralora_ml1m/valid.json \
+  --output deliveries/eval_accuracy/movielens_hydralora_ckpt53000_valid_accuracy.json \
+  --group-field task_type \
+  --batch-size 4
+```
+
+### Cleanup Summary
+
+The workspace was cleaned to retain final deliverables and reproducibility artifacts.
+
+Space usage:
+
+```text
+Before cleanup: 1.71 GiB
+After cleanup:  469.46 MiB
+Freed:          1.25 GiB
+```
+
+Deleted:
+
+- HuggingFace tokenization caches: `train_512/`, `valid_512/`
+- pseudo-user smoke data and smoke model outputs
+- superseded 50k pilot delivery
+- transient smoke evaluation JSON files
+- stale pid/out files
+- Python bytecode and empty directories
+
+Kept as uncertain:
+
+- `test_use_lora/output/baseline_lora1_ml1m_llama32_1b/`
+
+It is not part of the final pseudo-user delivery, but it may still be useful as a historical MovieLens baseline.
+
+### Follow-up Suggestions
+
+- Run a held-out `test.json` evaluation if a separate test split is produced later; current reported accuracy uses `valid.json`.
+- Investigate low pseudo-user domains first: `mind` and `kuairec`.
+- If storage becomes tight again, confirm whether the baseline MovieLens directory is still needed, then archive or delete it.

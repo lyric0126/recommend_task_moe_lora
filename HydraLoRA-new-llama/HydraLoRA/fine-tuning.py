@@ -464,8 +464,11 @@ def main():
 
     if training_args.do_train:
         with training_args.main_process_first(desc="loading and tokenization"):
-            path = Path(data_args.dataset_dir)
-            files = [os.path.join(path,file.name) for file in path.glob("*.json")]
+            if data_args.train_file is not None:
+                files = [data_args.train_file]
+            else:
+                path = Path(data_args.dataset_dir)
+                files = [os.path.join(path, file.name) for file in path.glob("*.json")]
             logger.info(f"Training files: {' '.join(files)}")
             train_dataset = build_instruction_dataset(
                 data_path=files,

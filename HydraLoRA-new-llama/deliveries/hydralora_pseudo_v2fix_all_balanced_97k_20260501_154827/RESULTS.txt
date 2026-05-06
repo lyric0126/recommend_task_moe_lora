@@ -1,0 +1,20 @@
+run_id=hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827
+delivery=/vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827
+source_data=/vepfs-cnbja62d5d769987/liushaokun/sys_work/dataset_human_like/final_data_use/data/data/final_versions/v2fix_all
+prepared_data=/vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/data/hydralora_pseudo_v2fix_all
+train_examples=95523
+valid_examples=1949
+status=train_steps_completed; final Trainer load_best_model_at_end hit local PEFT compatibility error, recovered by exposing best checkpoint as sft_lora_model
+total_steps=11940
+global_step=11940
+train/loss: points=1195 last_step=11940 last_value=0.31630000472068787
+eval/loss: points=11 last_step=11000 last_value=0.3299024999141693
+train/epoch: points=1206 last_step=11940 last_value=0.9999685883522034
+train/learning_rate: points=1195 last_step=11940 last_value=0.0
+train/grad_norm: points=1195 last_step=11940 last_value=2.203125
+best_metric_eval_loss=0.3299024999141693
+best_model_checkpoint=/vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoints/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoint-11000
+latest_checkpoint=/vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoints/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoint-11940
+best_sft_lora_model=/vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoints/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/sft_lora_model exists=True
+tensorboard=http://172.31.39.33:6008/
+written_at=2026-05-01 22:11:06 Asia/Shanghai

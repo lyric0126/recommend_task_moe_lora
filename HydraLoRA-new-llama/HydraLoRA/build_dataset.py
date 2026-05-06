@@ -51,8 +51,14 @@ def build_instruction_dataset(
         all_input_ids = []
         all_labels = []
         for s, t in zip(tokenized_sources["input_ids"], tokenized_targets["input_ids"]):
-            input_ids = torch.LongTensor(s + t)[:max_seq_length]
-            labels = torch.LongTensor([IGNORE_INDEX] * len(s) + t)[:max_seq_length]
+            if len(t) >= max_seq_length:
+                s = []
+                t = t[:max_seq_length]
+            else:
+                max_source_length = max_seq_length - len(t)
+                s = s[-max_source_length:]
+            input_ids = torch.LongTensor(s + t)
+            labels = torch.LongTensor([IGNORE_INDEX] * len(s) + t)
             assert len(input_ids) == len(labels)
             all_input_ids.append(input_ids)
             all_labels.append(labels)

@@ -1,0 +1,12 @@
+HydraLoRA pseudo-user balanced training run
+run_id=hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827
+created_at=2026-05-01 15:48:27 CST
+repo=/vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama
+source_data=/vepfs-cnbja62d5d769987/liushaokun/sys_work/dataset_human_like/final_data_use/data/data/final_versions/v2fix_all
+prepared_data=/vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/data/hydralora_pseudo_v2fix_all
+base_model=/vepfs-cnbja62d5d769987/liushaokun/models/Llama-3.2-1B
+sampling=balanced per pseudo_user/domain, MAX_SAMPLES=0, MAX_SAMPLES_PER_USER_DOMAIN=20
+expected_sft_examples=97472 total, 95523 train, 1949 valid
+checkpoints=/vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/checkpoints/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827
+train_log=/vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/logs/train.log
+tensorboard_log=/vepfs-cnbja62d5d769987/liushaokun/sys_work/HydraLoRA-new-llama/deliveries/hydralora_pseudo_v2fix_all_balanced_97k_20260501_154827/logs/tensorboard.log
